@@ -14,37 +14,66 @@ ofxTexturedMesh::ofxTexturedMesh(vector<ofVec3f> _pts,int texWidth,int texHeight
 {
 }
 //--------------------------------------------------------------
-void ofxTexturedMesh::setup(vector<ofVec3f> _pts,ofVec3f origin,int texWidth,int texHeight,int size)
+void ofxTexturedMesh::setup(vector<ofVec3f> _pts,ofVec3f origin,bool orientation,int texWidth,int texHeight,int size)
 {
     mesh.clear();
-    mesh.setMode(OF_PRIMITIVE_TRIANGLE_FAN);
+    mesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
     
     originLine.addVertices(_pts);
     
-    int interval = texHeight/_pts.size();
-    for (int pt = 0; pt < _pts.size(); pt++) {
-        
-        if (pt == _pts.size()-1) {
-            mesh.addTexCoord(ofVec2f(0,0));
-            mesh.addVertex(origin);
+    if (orientation) {
+        int interval = texHeight/_pts.size();
+        for (int pt = 0; pt < _pts.size(); pt++) {
             
-            mesh.addTexCoord(ofVec2f(texWidth,pt*interval));
-            mesh.addVertex(_pts[pt]);
-            
-            mesh.addTexCoord(ofVec2f(texWidth,pt*interval));
-            mesh.addVertex(_pts[0]);
-        }
-        else {
-            mesh.addTexCoord(ofVec2f(0,0));
-            mesh.addVertex(origin);
-        
-            mesh.addTexCoord(ofVec2f(texWidth,pt*interval));
-            mesh.addVertex(_pts[pt+1]);
-            
-            mesh.addTexCoord(ofVec2f(texWidth,pt*interval));
-            mesh.addVertex(_pts[pt]);
+            if (pt == _pts.size()-1) {
+                mesh.addTexCoord(ofVec2f(0,0));
+                mesh.addVertex(origin);
+                
+                mesh.addTexCoord(ofVec2f(texWidth,pt*interval));
+                mesh.addVertex(_pts[pt]);
+                
+                mesh.addTexCoord(ofVec2f(texWidth,pt*interval));
+                mesh.addVertex(_pts[0]);
+            }
+            else {
+                mesh.addTexCoord(ofVec2f(0,0));
+                mesh.addVertex(origin);
+                
+                mesh.addTexCoord(ofVec2f(texWidth,pt*interval));
+                mesh.addVertex(_pts[pt+1]);
+                
+                mesh.addTexCoord(ofVec2f(texWidth,pt*interval));
+                mesh.addVertex(_pts[pt]);
+            }
         }
     }
+    else {
+        int interval = texWidth/_pts.size();
+        for (int pt = 0; pt < _pts.size(); pt++) {
+            
+            if (pt == _pts.size()-1) {
+                mesh.addTexCoord(ofVec2f(pt*interval,0));
+                mesh.addVertex(origin);
+                
+                mesh.addTexCoord(ofVec2f(pt*interval,0));
+                mesh.addVertex(_pts[pt]);
+                
+                mesh.addTexCoord(ofVec2f(pt*interval,0));
+                mesh.addVertex(_pts[0]);
+            }
+            else {
+                mesh.addTexCoord(ofVec2f(pt*interval,0));
+                mesh.addVertex(origin);
+                
+                mesh.addTexCoord(ofVec2f(pt*interval,0));
+                mesh.addVertex(_pts[pt]);
+                
+                mesh.addTexCoord(ofVec2f(pt*interval,0));
+                mesh.addVertex(_pts[pt+1]);
+            }
+        }
+    }
+   
 }
 //--------------------------------------------------------------
 void ofxTexturedMesh::draw(bool showWireframe,bool showVertices,bool showOrigin,ofImage img)
