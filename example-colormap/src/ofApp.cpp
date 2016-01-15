@@ -70,7 +70,7 @@ void ofApp::setup()
     showWires = false;
     showVertices = false;
     showOrigins = false;
-    meshy.setup(points,origin,mappedGradientImage.getWidth(), mappedGradientImage.getHeight(),100);
+    meshy.setup(points,origin,false,mappedGradientImage.getWidth(), mappedGradientImage.getHeight(),100);
 }
 //--------------------------------------------------------------
 void ofApp::update()
