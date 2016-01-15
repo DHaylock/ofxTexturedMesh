@@ -59,7 +59,7 @@ void ofApp::keyPressed(int key)
     }
     else if (key == 'l')
     {
-        meshy.setup(pts,markerLine.getCentroid2D(), gradientImage.getWidth(), gradientImage.getHeight(), 25);
+        meshy.setup(pts,markerLine.getCentroid2D(),false, gradientImage.getWidth(), gradientImage.getHeight(), 25);
         pts.clear();
     }
 }

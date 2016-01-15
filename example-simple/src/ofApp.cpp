@@ -26,7 +26,7 @@ void ofApp::setup()
     }
     
     // Setup ofxTexturedMesh
-    meshy.setup(points,origin, gradientImage.getWidth(), gradientImage.getHeight(),50);
+    meshy.setup(points,origin,true, gradientImage.getWidth(), gradientImage.getHeight(),50);
 
     showWires = false;
     showVertices = false;
