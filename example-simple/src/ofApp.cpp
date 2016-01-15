@@ -15,7 +15,7 @@ void ofApp::setup()
     gradientImage.update();
     
     // Make a circle
-    ofVec2f origin = ofVec2f(ofGetWidth()/2, ofGetHeight()/2);
+    ofVec3f origin = ofVec3f(ofGetWidth()/2, ofGetHeight()/2,0);
     vector <ofVec3f> points;
     for (int out = 0; out < 50; out++)
     {
