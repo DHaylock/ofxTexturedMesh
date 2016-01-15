@@ -6,7 +6,6 @@ void ofApp::setup()
     gradientImage.allocate(ofGetWidth()/2,50,OF_IMAGE_GRAYSCALE);
     for(int x = 0; x < gradientImage.getWidth(); x++) {
         for(int y = 0; y < gradientImage.getHeight(); y++) {
-//            int value = 255*ofNoise(x/100.0,y/100.0,ofGetElapsedTimef()*0.1);
             int value = 255*((float)x/gradientImage.getWidth());
             gradientImage.setColor(x, y, value);
         }
@@ -77,13 +76,13 @@ void ofApp::setup()
 void ofApp::update()
 {
     ofSetWindowTitle(ofToString(ofGetFrameRate()));
-    for(int x = 0; x < gradientImage.getWidth(); x++) {
-        for(int y = 0; y < gradientImage.getHeight(); y++) {
-            int value = 255*ofNoise(x/100.0,y/100.0,ofGetElapsedTimef()*0.1);
-            gradientImage.setColor(x, y, value);
-        }
-    }
-    gradientImage.update();
+//    for(int x = 0; x < gradientImage.getWidth(); x++) {
+//        for(int y = 0; y < gradientImage.getHeight(); y++) {
+//            int value = 255*ofNoise(x/100.0,y/100.0,ofGetElapsedTimef()*0.1);
+//            gradientImage.setColor(x, y, value);
+//        }
+//    }
+//    gradientImage.update();
     colormap.apply(gradientImage, mappedGradientImage);
 }
 //--------------------------------------------------------------
