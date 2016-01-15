@@ -20,9 +20,11 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
-		ofImage gradientImage;
-    
+
+        ofImage gradientImage;
         ofxTexturedMesh meshy;
     
-        bool wires;
+        bool showWires;
+        bool showVertices;
+        bool showOrigins;
 };
