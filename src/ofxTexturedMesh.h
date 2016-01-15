@@ -17,7 +17,7 @@ class ofxTexturedMesh {
         ofxTexturedMesh(vector<ofVec3f> _pts,int texWidth,int texHeight);
         ~ofxTexturedMesh();
 
-        void setup(vector<ofVec3f> _pts,ofVec2f origin,int texWidth,int texHeight,int size);
+        void setup(vector<ofVec3f> _pts,ofVec3f origin,int texWidth,int texHeight,int size);
         void update();
         void draw(bool showWireframe,bool showVertices,bool showOrigin,ofImage img);
     

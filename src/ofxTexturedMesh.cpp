@@ -14,7 +14,7 @@ ofxTexturedMesh::ofxTexturedMesh(vector<ofVec3f> _pts,int texWidth,int texHeight
 {
 }
 //--------------------------------------------------------------
-void ofxTexturedMesh::setup(vector<ofVec3f> _pts,ofVec2f origin,int texWidth,int texHeight,int size)
+void ofxTexturedMesh::setup(vector<ofVec3f> _pts,ofVec3f origin,int texWidth,int texHeight,int size)
 {
     mesh.clear();
     mesh.setMode(OF_PRIMITIVE_TRIANGLE_FAN);
@@ -24,7 +24,7 @@ void ofxTexturedMesh::setup(vector<ofVec3f> _pts,ofVec2f origin,int texWidth,int
     int interval = texHeight/_pts.size();
     for (int pt = 0; pt < _pts.size(); pt++) {
         
-        if (pt == pts.size()-1) {
+        if (pt == _pts.size()-1) {
             mesh.addTexCoord(ofVec2f(0,0));
             mesh.addVertex(origin);
             
